@@ -1,0 +1,76 @@
+@extends('layouts.app')
+@section('content')
+
+    <div class="row">
+        <div class="col-lg-12 margin-tb">
+            <div class="pull-left">
+                <h2>Add New Blog</h2>
+            </div>
+
+            <div class="pull-right">
+                <a class="btn btn-primary" href="{{ route('blogs.index') }}"> Back</a>
+            </div>
+        </div>
+    </div>
+
+    @if ($errors->any())
+
+        <div class="alert alert-danger">
+            <strong>Whoops!</strong> There were some problems with your input.<br><br>
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+
+    @endif
+
+
+    {!! Form::open(array('route' => 'blogs.store','method'=>'POST')) !!}
+
+         <div class="row">
+
+		    <div class="col-xs-12 col-sm-12 col-md-12">
+		        <div class="form-group">
+		            <strong>Name:</strong>
+                    {!! Form::text('name', null, array('placeholder' => 'Name','class' => 'form-control')) !!}
+		        </div>
+		    </div>
+
+		    <div class="col-xs-12 col-sm-12 col-md-12">
+		        <div class="form-group">
+		            <strong>Body:</strong>
+                    {!! Form::textarea('body', null, array('placeholder' => 'body','class' => 'form-control')) !!}
+		        </div>
+		    </div>
+
+             <div class="col-xs-12 col-sm-12 col-md-12">
+                 <div class="form-group">
+                     <strong>slug:</strong>
+                     {!! Form::text('slug', null, array('placeholder' => 'Slug','class' => 'form-control')) !!}
+                 </div>
+             </div>
+
+             <div class="col-xs-12 col-sm-12 col-md-12">
+                 <div class="form-group">
+                     <strong>keywords:</strong>
+                     {!! Form::text('keywords', null, array('placeholder' => 'Keywords','class' => 'form-control')) !!}
+                 </div>
+             </div>
+
+             <div class="col-xs-12 col-sm-12 col-md-12">
+                 <div class="form-group">
+                     <strong>meta_desc:</strong>
+                     {!! Form::text('meta_desc', null, array('placeholder' => 'Meta_desc','class' => 'form-control')) !!}
+                 </div>
+             </div>
+
+		    <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+		            <button type="submit" class="btn btn-primary">Submit</button>
+		    </div>
+
+		</div>
+    </form>
+
+@endsection
